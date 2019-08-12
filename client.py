@@ -4,13 +4,15 @@ import threading
 
 def sendMessage():
   while True:
-    message = input("{}>>".format(s.getsockname())) 
+    message = input("{}>>".format(username)) 
     s.send(message.encode('utf-8'))
 
 def recvMessage():
   while True:
-    data = s.recv(1024)
+    data = s.recv(1024).decode('utf-8')
+    print(data)
     data = json.loads(data)
+    print("Dict: ", data)
     if data:
       print("\n{}>>{}".format(data[s.getsockname()], data['data']))
 

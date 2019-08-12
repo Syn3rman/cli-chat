@@ -37,8 +37,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             print(dataDict)
             print("Recieved {} from {}".format(data, sock.getpeername()))
             for wrSock in writeSocks:
+              print(wrSock.getpeername()!=sock.getpeername())
               if wrSock.getpeername()!=sock.getpeername(): 
-                wrSock.send(json.dumps(dataDict))
+                wrSock.send(json.dumps(dataDict).encode('utf-8'))
           else:
             connectionList.remove(sock)
         except:
