@@ -4,23 +4,22 @@ import threading
 
 def sendMessage():
   while True:
-    message = input("Enter message to be sent: ") 
-    print("Sending message: {} ".format(message))
+    message = input("{}>>".format(s.getsockname())) 
     s.send(message.encode('utf-8'))
 
 def recvMessage():
   while True:
     data = s.recv(1024).decode('utf-8')
     if data:
-      print("Recieved {} from {}".format(data, s.getsockname()))
+      print("\n{}>>{}".format(s.getsockname(),data))
 
-PORT = 1235
+PORT = 1234
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 HOST = input("Enter the address of the server: ")
 s.connect((HOST, PORT))
+print("\nConnected to {}".format(s.getsockname()))
 sendt = threading.Thread(target=sendMessage)
 recvt = threading.Thread(target=recvMessage)
 sendt.start()
 recvt.start()
-print("Connected to {}".format(s.getsockname()))
