@@ -2,7 +2,8 @@
 Cli based group chat to stay connected in lab pracs :P
 
 
-## Why : Wanted to work with sockets in python ¯\_(ツ)_/¯
+## Why
+Wanted to work with sockets in python ¯\_(ツ)_/¯
 
 ## To-do's:
 [] Scan network and give client option to choose the host to connect to.
