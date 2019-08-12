@@ -10,11 +10,9 @@ def sendMessage():
 def recvMessage():
   while True:
     data = s.recv(1024).decode('utf-8')
-    print(data)
     data = json.loads(data)
-    print("Dict: ", data)
     if data:
-      print("\n{}>>{}".format(data[s.getsockname()], data['data']))
+      print("\n{}>>{}".format(list(data.values())[1], data['data']))
 
 PORT = 1235
 
